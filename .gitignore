@@ -1,6 +1,10 @@
 # IDE Files
 .idea/
 
+# Reference Images
+src/images/reference-imgs
+src/images/reference-imgs/*
+
 # Logs
 logs
 *.log
