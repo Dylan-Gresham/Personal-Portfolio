@@ -14,6 +14,17 @@
     --txt-backdrop: #ffffff;
 }
 
+::-webkit-scrollbar {
+    width: 14px;
+}
+
+::-webkit-scrollbar-thumb {
+    border: 4px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    border-radius: 9999px;
+    background-color: #AAAAAA;
+}
+
 @media (prefers-color-scheme: dark) {
     :root {
         --bg-color: #242424;
@@ -58,6 +69,7 @@ body {
     display: grid;
     grid-template-rows: 1fr 4.5fr 0.5fr;
     grid-template-columns: 1fr;
+    overflow: scroll;
 }
 
 h1 {
