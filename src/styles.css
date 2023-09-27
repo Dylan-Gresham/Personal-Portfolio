@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'RobotoMono NF';
-    src: url('./fonts/RobotoMonoNF/RobotoMonoNerdFont-Regular.ttf') format('ttf');
+    src: url('./fonts/RobotoMonoNF/RobotoMonoNerdFont-Regular.ttf') format('truetype');
     font-weight: 600;
     font-style: normal;
 }
@@ -91,6 +91,11 @@ body > header > .aboutMeContainer {
     align-content: center;
     gap: 1.5rem;
     padding: 1rem 0;
+}
+
+body > header > .aboutMeContainer > .aboutMeDiv > .links {
+    display: flex;
+    gap: 0.5rem;
 }
 
 body > main {

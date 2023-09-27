@@ -1,11 +1,10 @@
-import SelfieImg from './images/wip.png';
-import ProjectOne from './images/project1.png';
-import ProjectTwo from './images/wip.png';
-import ProjectThree from './images/wip.png';
-import ProjectFour from './images/wip.png';
+const SelfieImg = require('./images/wip.png');
+const ProjectOne = require('./images/project1.png');
+const ProjectTwo = require('./images/wip.png');
+const ProjectThree = require('./images/wip.png');
+const ProjectFour = require('./images/wip.png');
 
 function initialize() {
-    const body = document.body;
     const header = document.createElement('header');
     header.classList.add('landmarkContainer');
     const main = document.createElement('main');
@@ -22,7 +21,7 @@ function initialize() {
     selfie.setAttribute('alt', 'Photo of me.');
 
     const aboutMeDiv = document.createElement('div');
-    aboutMeDiv.classList.add('aboutMeContainer');
+    aboutMeDiv.classList.add('aboutMeDiv');
     const sectionHeader = document.createElement('h1');
     sectionHeader.textContent = 'Who Am I?';
     sectionHeader.classList.add('sectionHeader');
@@ -74,10 +73,62 @@ function initialize() {
     // End Create Main
 
     // Create Footer
+    const footerSectionHeader = document.createElement('h1');
+    footerSectionHeader.classList.add('sectionHeader');
+    footerSectionHeader.textContent = 'Contact Me!';
+    const contactDivsContainer = document.createElement('div');
+    contactDivsContainer.classList.add('contactDivsContainer');
 
+    const contactLabels = document.createElement('div');
+    contactLabels.classList.add('contactDiv');
+    contactLabels.classList.add('contactLabels');
+    const emailLabel = document.createElement('p');
+    const boldEmail = document.createElement('b');
+    boldEmail.textContent = 'By email:';
+    emailLabel.appendChild(boldEmail);
+    const linkedInLabel = document.createElement('p');
+    const boldLinkedIn = document.createElement('b');
+    boldLinkedIn.textContent = 'Through LinkedIn:';
+    linkedInLabel.appendChild(boldLinkedIn);
+    const msgLabel = document.createElement('p');
+    const boldMsg = document.createElement('b');
+    boldMsg.textContent = 'Or leave a message';
+    msgLabel.appendChild(boldMsg);
+    contactLabels.append(emailLabel, linkedInLabel, msgLabel);
+
+    const contactLinks = document.createElement('div');
+    contactLinks.classList.add('contactDiv');
+    contactLinks.classList.add('contactLinks');
+    const emailP = document.createElement('p');
+    const primaryEmailLink = document.createElement('a');
+    primaryEmailLink.classList.add('footerLinks');
+    primaryEmailLink.setAttribute('href', 'mailto: dgresh724@gmail.com?subject=Contact');
+    primaryEmailLink.textContent = 'dgresh724@gmail.com';
+    emailP.appendChild(primaryEmailLink);
+    emailP.appendChild(document.createTextNode(' (link opens a new email in a new window)'));
+    const linkedInP = document.createElement('p');
+    const linkedInLink = document.createElement('a');
+    linkedInLink.classList.add('footerLinks');
+    linkedInLink.setAttribute('href', 'https://www.linkedin.com/in/dylan-gresham-3b3862282');
+    linkedInLink.setAttribute('target', '_blank');
+    linkedInLink.textContent = 'My Profile';
+    linkedInP.appendChild(linkedInLink);
+    linkedInP.appendChild(document.createTextNode(' (link opens in a new tab'));
+    const ghP = document.createElement('p');
+    const ghLink = document.createElement('a');
+    ghLink.classList.add('footerLinks');
+    ghLink.setAttribute('href', 'https://www.github.com/Dylan-Gresham/Personal-Portfolio');
+    ghLink.setAttribute('target', '_blank');
+    ghLink.textContent = 'on my GitHub!';
+    ghP.appendChild(ghLink);
+    ghP.appendChild(document.createTextNode(' (link opens in a new tab'));
+    contactLinks.append(emailP, linkedInP, ghP);
+
+    contactDivsContainer.append(contactLabels, contactLinks);
+    footer.append(footerSectionHeader, contactDivsContainer);
     // End Create Footer
 
-    body.append(header, main, footer);
+    return [header, main, footer];
 }
 
 function loadResume(container) {
@@ -127,4 +178,4 @@ function createProjectCard(num) {
     return projectDiv;
 }
 
-module.exports = initialize;
+module.exports = {initialize};
