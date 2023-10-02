@@ -1,4 +1,4 @@
-const SelfieImg = require('./images/wip.png');
+const SelfieImg = require('./images/photo.jpg');
 const ProjectOne = require('./images/project1.png');
 const ProjectTwo = require('./images/wip.png');
 const ProjectThree = require('./images/wip.png');
@@ -203,6 +203,9 @@ function loadMain(container) {
 }
 
 function createProjectCard(num) {
+    const linkA = document.createElement('a');
+    linkA.classList.add('hiddenLink');
+    linkA.setAttribute('target', '_blank');
     const projectDiv = document.createElement('div');
     projectDiv.classList.add('projectCard');
     const projImg = new Image();
@@ -214,24 +217,28 @@ function createProjectCard(num) {
 
     switch (num) {
         case 1:
+            linkA.setAttribute('href', 'https://github.com/Dylan-Gresham/TOP-WeatherApp');
             projImg.src = ProjectOne;
             projImg.alt = 'Weather App screenshot';
             projectHeader.textContent = 'Weather App';
             projectDesc.textContent = 'A simple weather app to show current, hourly, and 2-day forecasts';
             break;
         case 2:
+            linkA.setAttribute('href', 'https://github.com/Dylan-Gresham/MyLibraryApp');
             projImg.src = ProjectTwo;
             projImg.alt = 'My Library App screenshot';
             projectHeader.textContent = 'My Library App';
             projectDesc.textContent = 'A library tracking app for all your books and comics. This project is currently a Work In Progress';
             break;
         case 3:
+            linkA.setAttribute('href', 'https://github.com/Dylan-Gresham/Clicker');
             projImg.src = ProjectThree;
             projImg.alt = 'Clicker App screenshot';
             projectHeader.textContent = 'Clicker';
             projectDesc.textContent = 'A user-programmable auto-clicker';
             break;
         case 4:
+            linkA.setAttribute('href', 'https://github.com/Dylan-Gresham/Nottah');
             projImg.src = ProjectFour;
             projImg.alt = 'Nottah App screenshot';
             projectHeader.textContent = 'Nottah';
@@ -241,8 +248,9 @@ function createProjectCard(num) {
             throw new Error(`Error: Couldn't create project card #${num}.`);
     }
     projectDiv.append(projImg, projectHeader, projectDesc);
+    linkA.appendChild(projectDiv);
 
-    return projectDiv;
+    return linkA;
 }
 
 module.exports = {initialize};

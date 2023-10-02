@@ -85,6 +85,13 @@ body > header {
     box-shadow: 0 3px 5px 1px rgba(0,0,0,0.5);
 }
 
+body > header > .aboutMeContainer > .mainPhoto {
+    margin-left: 0.5rem;
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 250px;
+}
+
 body > header > .aboutMeContainer {
     display: flex;
     justify-content: center;
@@ -111,20 +118,24 @@ body > main > .projectCardsContainer {
     gap: 2rem;
 }
 
-body > main > .projectCardsContainer > .projectCard {
+body > main > .projectCardsContainer > .hiddenLink > .projectCard,
+body > main > .projectCardsContainer > .hiddenLink {
     background-color: var(--txt-backdrop);
+}
 
+body > main > .projectCardsContainer > .hiddenLink {
     -webkit-box-shadow: 0 0 6px 1px rgba(0,0,0,0.75);
     -moz-box-shadow: 0 0 6px 1px rgba(0,0,0,0.75);
     box-shadow: 0 0 6px 1px rgba(0,0,0,0.75);
+    text-decoration: none;
 }
 
-body > main > .projectCardsContainer > .projectCard > p,
-body > main > .projectCardsContainer > .projectCard > h2 {
+body > main > .projectCardsContainer > .hiddenLink > .projectCard > p,
+body > main > .projectCardsContainer > .hiddenLink > .projectCard > h2 {
     margin-left: 0.25rem;
 }
 
-body > main > .projectCardsContainer > .projectCard * {
+body > main > .projectCardsContainer > .hiddenLink > .projectCard * {
     background-color: transparent;
 }
 
