@@ -80,23 +80,6 @@ function initialize() {
     const contactDivsContainer = document.createElement('div');
     contactDivsContainer.classList.add('contactDivsContainer');
 
-    const contactLabels = document.createElement('div');
-    contactLabels.classList.add('contactDiv');
-    contactLabels.classList.add('contactLabels');
-    const emailLabel = document.createElement('p');
-    const boldEmail = document.createElement('b');
-    boldEmail.textContent = 'By email:';
-    emailLabel.appendChild(boldEmail);
-    const linkedInLabel = document.createElement('p');
-    const boldLinkedIn = document.createElement('b');
-    boldLinkedIn.textContent = 'Through LinkedIn:';
-    linkedInLabel.appendChild(boldLinkedIn);
-    const msgLabel = document.createElement('p');
-    const boldMsg = document.createElement('b');
-    boldMsg.textContent = 'Or leave a message';
-    msgLabel.appendChild(boldMsg);
-    contactLabels.append(emailLabel, linkedInLabel, msgLabel);
-
     const contactLinks = document.createElement('div');
     contactLinks.classList.add('contactDiv');
     contactLinks.classList.add('contactLinks');
@@ -105,6 +88,7 @@ function initialize() {
     primaryEmailLink.classList.add('footerLinks');
     primaryEmailLink.setAttribute('href', 'mailto: dgresh724@gmail.com?subject=Contact');
     primaryEmailLink.textContent = 'dgresh724@gmail.com';
+    emailP.appendChild(document.createTextNode('By email: '));
     emailP.appendChild(primaryEmailLink);
     emailP.appendChild(document.createTextNode(' (link opens a new email in a new window)'));
     const linkedInP = document.createElement('p');
@@ -113,6 +97,7 @@ function initialize() {
     linkedInLink.setAttribute('href', 'https://www.linkedin.com/in/dylan-gresham-3b3862282');
     linkedInLink.setAttribute('target', '_blank');
     linkedInLink.textContent = 'My Profile';
+    linkedInP.appendChild(document.createTextNode('Through LinkedIn: '));
     linkedInP.appendChild(linkedInLink);
     linkedInP.appendChild(document.createTextNode(' (link opens in a new tab)'));
     const ghP = document.createElement('p');
@@ -121,11 +106,12 @@ function initialize() {
     ghLink.setAttribute('href', 'https://www.github.com/Dylan-Gresham/Personal-Portfolio');
     ghLink.setAttribute('target', '_blank');
     ghLink.textContent = 'on my GitHub!';
+    ghP.appendChild(document.createTextNode('Or leave a message '));
     ghP.appendChild(ghLink);
     ghP.appendChild(document.createTextNode(' (link opens in a new tab)'));
     contactLinks.append(emailP, linkedInP, ghP);
 
-    contactDivsContainer.append(contactLabels, contactLinks);
+    contactDivsContainer.appendChild(contactLinks);
     footer.append(footerSectionHeader, contactDivsContainer);
     // End Create Footer
 

@@ -171,12 +171,8 @@ footer > .contactDivsContainer > .contactDiv {
     flex-direction: column;
 }
 
-footer > .contactDivsContainer > .contactLabels > p {
-    text-align: right;
-}
-
-footer > .contactDivsContainer > .contactLinks > p {
-    text-align: left;
+footer > .contactDivsContainer > .contactLinks {
+    text-align: center;
 }
 
 main.resume > #resumeViewContainer {
@@ -200,4 +196,51 @@ main.resume > #resumeViewContainer > #pdfDiv > object {
 
 main.resume > #resumeViewContainer > .btnContainer > .goBack {
     color: var(--btn-txt-color)
+}
+
+@media (max-width: 600px) {
+    body > header > .aboutMeContainer {
+        gap: 0.25rem;
+        padding: 0.5rem;
+        flex-direction: column;
+    }
+
+    body > header > .aboutMeContainer > .mainPhoto {
+        width: 190px;
+        height: 300px;
+        align-self: center;
+    }
+
+    body > main > .projectCardsContainer {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        gap: 1rem;
+        margin: 0 0.75rem 1.25rem;
+    }
+
+    body {
+        padding: 0;
+        margin: 0;
+
+        display: grid;
+        grid-template-rows: 1.65fr 4.5fr 0.5fr;
+        grid-template-columns: 1fr;
+        overflow: scroll;
+    }
+}
+
+@media (max-width: 1000px) {
+    body > header > .aboutMeContainer {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        gap: 1rem;
+        padding: 0.5rem 0.5rem;
+    }
+
+    body {
+        grid-template-rows: 1.32fr 4.5fr 0.5fr;
+        grid-template-columns: 1fr;
+    }
 }
