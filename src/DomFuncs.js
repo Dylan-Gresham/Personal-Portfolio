@@ -1,7 +1,7 @@
 const SelfieImg = require('./images/photo.jpg');
 const ProjectOne = require('./images/project1.png');
 const ProjectTwo = require('./images/wip.png');
-const ProjectThree = require('./images/wip.png');
+const ProjectThree = require('./images/project3.png');
 const ProjectFour = require('./images/wip.png');
 
 function initialize() {
