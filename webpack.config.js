@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     mode: 'development',
@@ -15,6 +16,11 @@ module.exports = {
                 viewport: 'width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0',
                 'http-equiv': 'id=edge',
             },
+        }),
+        new CopyWebpackPlugin({
+            patterns: [
+                "./Resume.pdf",
+            ]
         }),
     ],
     output: {

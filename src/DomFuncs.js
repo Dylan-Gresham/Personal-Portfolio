@@ -28,6 +28,14 @@ function initialize() {
     const aboutMeText = document.createElement('h3');
     aboutMeText.classList.add('aboutMeText');
     aboutMeText.textContent = 'Hi! I\'m Dylan Gresham, an aspiring software developer.';
+    const aboutMeTextCont = document.createElement('h4');
+    aboutMeTextCont.classList.add('aboutMeText');
+    aboutMeTextCont.classList.add('aboutMeTextCont');
+    aboutMeTextCont.textContent = "Striving to develop technology that utilizes AI in order to improve peoples' day-to-day lives.";
+    const aboutMeTextContTwo = document.createElement('h4');
+    aboutMeTextContTwo.classList.add('aboutMeText');
+    aboutMeTextContTwo.classList.add('aboutMeTextCont');
+    aboutMeTextContTwo.textContent = "I'm also an avid reader & baker and am also known to enjoy watching anime in my free time alongside working on my personal projects. Of which you can find some of them below!";
     const linksDiv = document.createElement('div');
     linksDiv.classList.add('links');
     const ghButton = document.createElement('button');
@@ -51,25 +59,18 @@ function initialize() {
     resumeButton.textContent = 'Resume';
     resumeButton.addEventListener('click', (event) => {
        loadResume(main);
-       // Resume Link
-       // https://drive.google.com/file/d/1wh-Ihr0KovrPqKp7cMtyhefPlmaHuU6P/view?usp=sharing
 
        event.stopPropagation();
     });
     linksDiv.append(ghButton, liButton, resumeButton);
-    aboutMeDiv.append(sectionHeader, aboutMeText, linksDiv);
+    aboutMeDiv.append(sectionHeader, aboutMeText, aboutMeTextCont, aboutMeTextContTwo, linksDiv);
     aboutMeContainer.append(selfie, aboutMeDiv);
+
     header.appendChild(aboutMeContainer);
     // End Create Header
 
     // Create Main
-    const mainSectionHeader = document.createElement('h1');
-    mainSectionHeader.classList.add('sectionHeader');
-    mainSectionHeader.textContent = 'My Projects';
-    const projectCardsContainer = document.createElement('div');
-    projectCardsContainer.classList.add('projectCardsContainer');
-    projectCardsContainer.append(createProjectCard(1), createProjectCard(2), createProjectCard(3), createProjectCard(4));
-    main.append(mainSectionHeader, projectCardsContainer);
+    loadMain(main);
     // End Create Main
 
     // Create Footer
@@ -113,7 +114,7 @@ function initialize() {
     linkedInLink.setAttribute('target', '_blank');
     linkedInLink.textContent = 'My Profile';
     linkedInP.appendChild(linkedInLink);
-    linkedInP.appendChild(document.createTextNode(' (link opens in a new tab'));
+    linkedInP.appendChild(document.createTextNode(' (link opens in a new tab)'));
     const ghP = document.createElement('p');
     const ghLink = document.createElement('a');
     ghLink.classList.add('footerLinks');
@@ -121,7 +122,7 @@ function initialize() {
     ghLink.setAttribute('target', '_blank');
     ghLink.textContent = 'on my GitHub!';
     ghP.appendChild(ghLink);
-    ghP.appendChild(document.createTextNode(' (link opens in a new tab'));
+    ghP.appendChild(document.createTextNode(' (link opens in a new tab)'));
     contactLinks.append(emailP, linkedInP, ghP);
 
     contactDivsContainer.append(contactLabels, contactLinks);
@@ -132,7 +133,73 @@ function initialize() {
 }
 
 function loadResume(container) {
-    return;
+    while(container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+
+    container.classList.toggle('resume');
+
+    const resumeViewContainer = document.createElement('div');
+    resumeViewContainer.id = 'resumeViewContainer';
+
+    const topContainer = document.createElement('div');
+    topContainer.classList.add('btnContainer');
+    const goBackBtn = document.createElement('button');
+    goBackBtn.classList.add('goBack');
+    goBackBtn.textContent = 'Return to Portfolio';
+    goBackBtn.setAttribute('type', 'button');
+    goBackBtn.addEventListener('click', (event) => {
+        container.classList.toggle('resume');
+        loadMain(container);
+
+        event.stopPropagation();
+    });
+
+    const openLinkP = document.createElement('p');
+    const openInGDrive = document.createElement('a');
+    openInGDrive.classList.add('footerLinks');
+    openInGDrive.setAttribute('href', 'https://drive.google.com/file/d/1wh-Ihr0KovrPqKp7cMtyhefPlmaHuU6P/view?usp=sharing');
+    openInGDrive.setAttribute('target', '_blank');
+    openInGDrive.textContent = 'Open in Google Drive';
+    openLinkP.appendChild(openInGDrive);
+    openLinkP.appendChild(document.createTextNode(' (link opens in new tab)'));
+    topContainer.append(goBackBtn, openLinkP);
+
+    const pdfDiv = document.createElement('div');
+    pdfDiv.id = 'pdfDiv';
+    const object = document.createElement('object');
+    object.setAttribute('data', './Resume.pdf');
+    object.setAttribute('type', 'application/pdf');
+    object.setAttribute('width', '75%');
+    object.setAttribute('height', '1000px');
+    const fallBack = document.createElement('p');
+    const externalLink = document.createElement('a');
+    externalLink.classList.add('footerLinks');
+    externalLink.setAttribute('href', 'https://drive.google.com/file/d/1wh-Ihr0KovrPqKp7cMtyhefPlmaHuU6P/view?usp=sharing');
+    externalLink.setAttribute('target', '_blank');
+    externalLink.textContent = 'Open in Google Drive';
+    fallBack.append(document.createTextNode('Unable to display PDF: '),
+        externalLink,
+        document.createTextNode(' (link opens in a new tab)'));
+    object.appendChild(fallBack);
+    pdfDiv.appendChild(object);
+
+    resumeViewContainer.append(topContainer, pdfDiv);
+    container.appendChild(resumeViewContainer);
+}
+
+function loadMain(container) {
+    while(container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+
+    const mainSectionHeader = document.createElement('h1');
+    mainSectionHeader.classList.add('sectionHeader');
+    mainSectionHeader.textContent = 'My Projects';
+    const projectCardsContainer = document.createElement('div');
+    projectCardsContainer.classList.add('projectCardsContainer');
+    projectCardsContainer.append(createProjectCard(1), createProjectCard(2), createProjectCard(3), createProjectCard(4));
+    container.append(mainSectionHeader, projectCardsContainer);
 }
 
 function createProjectCard(num) {
@@ -150,25 +217,25 @@ function createProjectCard(num) {
             projImg.src = ProjectOne;
             projImg.alt = 'Weather App screenshot';
             projectHeader.textContent = 'Weather App';
-            projectDesc.textContent = 'A simple weather app to show current, hourly, and 2-day forecasts.';
+            projectDesc.textContent = 'A simple weather app to show current, hourly, and 2-day forecasts';
             break;
         case 2:
             projImg.src = ProjectTwo;
             projImg.alt = 'My Library App screenshot';
             projectHeader.textContent = 'My Library App';
-            projectDesc.textContent = 'A library tracking app for all your books and comics. This project is currently a Work In Progress.';
+            projectDesc.textContent = 'A library tracking app for all your books and comics. This project is currently a Work In Progress';
             break;
         case 3:
             projImg.src = ProjectThree;
             projImg.alt = 'Clicker App screenshot';
             projectHeader.textContent = 'Clicker';
-            projectDesc.textContent = 'A user-programmable auto-clicker.';
+            projectDesc.textContent = 'A user-programmable auto-clicker';
             break;
         case 4:
             projImg.src = ProjectFour;
             projImg.alt = 'Nottah App screenshot';
             projectHeader.textContent = 'Nottah';
-            projectDesc.textContent = 'Nottah, a note-taking app that\'s Nottah lot.';
+            projectDesc.textContent = 'Nottah, a note-taking app that\'s Nottah lot';
             break;
         default:
             throw new Error(`Error: Couldn't create project card #${num}.`);

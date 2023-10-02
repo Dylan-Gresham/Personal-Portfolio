@@ -67,7 +67,7 @@ body {
     margin: 0;
 
     display: grid;
-    grid-template-rows: 1fr 4.5fr 0.5fr;
+    grid-template-rows: 1.23fr 4.5fr 0.5fr;
     grid-template-columns: 1fr;
     overflow: scroll;
 }
@@ -134,7 +134,7 @@ body > main > .projectCardsContainer > .projectCard * {
     object-fit: fill;
 }
 
-footer .footerLinks {
+.footerLinks {
     color: var(--btn-color);
 }
 
@@ -166,4 +166,27 @@ footer > .contactDivsContainer > .contactLabels > p {
 
 footer > .contactDivsContainer > .contactLinks > p {
     text-align: left;
+}
+
+main.resume > #resumeViewContainer {
+    height: 100%;
+    width: 100%;
+    padding: 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+main.resume > #resumeViewContainer > #pdfDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main.resume > #resumeViewContainer > #pdfDiv > object {
+    border: 1px solid var(--txt-color);
+    border-radius: 12px;
+}
+
+main.resume > #resumeViewContainer > .btnContainer > .goBack {
+    color: var(--btn-txt-color)
 }
