@@ -3,14 +3,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     entry: {
         index: './src/index.js',
         domfuncs: './src/DomFuncs.js'
-    },
-    devtool: 'inline-source-map',
-    devServer: {
-        static: './dist',
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -30,7 +26,6 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].bundle.js',
         clean: true,
-        publicPath: '/',
     },
     optimization: {
         runtimeChunk: 'single',
